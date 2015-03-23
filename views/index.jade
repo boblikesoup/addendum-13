@@ -1,0 +1,20 @@
+doctype html
+html(ng-app="index")
+  head
+    title= title
+    link(rel='stylesheet', href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/index.css')
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js")
+    script(src="/javascripts/index.js")
+
+  body
+    .filler(ng-controller='IndexController as index')
+      h1 {{index.introduction.title}}
+      br
+      br
+      br
+      h2#start(ng-hide='index.introduction.started')(ng-click="loadText()") {{index.introduction.start}}
+      h2.text(ng-show='index.introduction.started')(ng-click="loadMoreText()") {{index.introduction.introductionTexts[index.introduction.introductionTextCounter]}}
+      //- Click should hide Begin and Show text.  Clicking text should show next in array
